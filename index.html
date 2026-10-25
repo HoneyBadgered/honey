@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- EDIT ME: title, description and social sharing info -->
+<title>Your Stage Name – Official Links</title>
+<meta name="description" content="Find me on all my platforms and spoil me. 18+ only.">
+<meta name="robots" content="noindex">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Your Stage Name – Official Links">
+<meta property="og:description" content="Find me on all my platforms and spoil me. 18+ only.">
+<!-- EDIT ME: use a full public URL for the share image, e.g. https://yoursite.com/avatar.jpg -->
+<meta property="og:image" content="https://example.com/avatar.jpg">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#14111a">
+<style>
+:root{--bg:#14111a;--card:#1f1a28;--text:#f3eef7;--muted:#a99fb8;--accent:#f4a6c0;--accent2:#b79cf0}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(circle at top,#241a33,var(--bg) 60%) fixed;color:var(--text);
+font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.5}
+main{max-width:480px;margin:0 auto;padding:32px 16px 16px}
+.hero{text-align:center}
+.avatar{width:128px;height:128px;border-radius:50%;object-fit:cover;border:3px solid var(--accent);
+box-shadow:0 0 24px rgba(244,166,192,.3)}
+h1{margin:16px 0 4px;font-size:2rem;overflow-wrap:anywhere}
+.tagline{margin:0 0 12px;color:var(--accent);font-weight:600}
+.bio{margin:0 auto;color:var(--muted)}
+h2{margin:36px 0 12px;font-size:1.25rem;text-align:center}
+.links{display:flex;flex-direction:column;gap:12px}
+.btn{display:block;min-height:56px;padding:10px 18px;border-radius:16px;background:var(--card);
+color:var(--text);text-decoration:none;border:1px solid #2e2740;border-left:6px solid var(--c,var(--accent));
+transition:transform .15s ease,box-shadow .15s ease,background .15s ease}
+.btn:hover,.btn:focus-visible{transform:translateY(-2px);background:#272033;box-shadow:0 6px 18px rgba(0,0,0,.35)}
+.btn:active{transform:scale(.98)}
+.btn b{display:block}
+.btn span{display:block;font-size:.85rem;color:var(--muted)}
+.tips .btn{border-left-color:var(--c,#f6b38e)}
+footer{margin-top:40px;padding:16px;text-align:center;font-size:.8rem;color:var(--muted)}
+footer a{color:var(--accent)}
+@media (prefers-reduced-motion:reduce){.btn{transition:none}}
+</style>
+</head>
+<body>
+<main>
+<header class="hero">
+<!-- EDIT ME: to swap the photo, put your image (e.g. photo.jpg) in this folder and set PROFILE.photo below -->
+<img class="avatar" id="photo" alt="Profile photo" width="128" height="128">
+<h1 id="name"></h1>
+<p class="tagline" id="tagline"></p>
+<p class="bio" id="bio"></p>
+</header>
+
+<section aria-labelledby="find">
+<h2 id="find">Find Me</h2>
+<nav class="links" id="links"></nav>
+</section>
+
+<section class="tips" aria-labelledby="spoil">
+<h2 id="spoil">Spoil Me 💦</h2>
+<nav class="links" id="tips"></nav>
+</section>
+</main>
+
+<footer>
+<p>&copy; <span id="year"></span> <span id="copyName"></span>. 18+ only.</p>
+<!-- EDIT ME: business email is set in PROFILE.email below -->
+<p><a id="email" href="#">Business inquiries</a></p>
+</footer>
+
+<script>
+/* ============================================================
+   EDIT ME: everything you need to change lives in this block.
+   Leave a url as "" to hide that button. Fill the two "Custom"
+   slots (name, desc, url) to show them.
+   ============================================================ */
+var PROFILE = {
+  name: "Your Stage Name",                       // EDIT ME
+  tagline: "BBW • hucow • mommy domme",          // EDIT ME
+  bio: "Hey babe, I'm your favorite curvy girl next door. I love teasing, spoiling, and taking care of my good boys. Pick your favorite spot below and come play with me.", // EDIT ME
+  photo: "avatar.svg",                           // EDIT ME: swap for "photo.jpg" etc.
+  email: "you@example.com"                       // EDIT ME
+};
+
+var LINKS = [ // EDIT ME: url, desc (color is optional)
+  {name:"ManyVids",    desc:"Clips & customs",        url:"https://www.manyvids.com/",   color:"#c2185b"},
+  {name:"Clips4Sale",  desc:"My full clip store",     url:"https://www.clips4sale.com/", color:"#e0662b"},
+  {name:"OnlyFans",    desc:"Exclusive daily content",url:"https://onlyfans.com/",       color:"#00aff0"},
+  {name:"Fansly",      desc:"Subscribe for more",     url:"https://fansly.com/",         color:"#1f8bff"},
+  {name:"Twitter / X", desc:"Teasers & chatting",     url:"https://x.com/",              color:"#8899a6"},
+  {name:"Instagram",   desc:"Safe-for-work peeks",    url:"https://instagram.com/",      color:"#d6409f"},
+  {name:"TikTok",      desc:"Fun & flirty clips",     url:"https://tiktok.com/",         color:"#25f4ee"},
+  {name:"Reddit",      desc:"Come say hi",            url:"https://reddit.com/u/",       color:"#ff5700"},
+  {name:"Custom 1",    desc:"",                       url:""},  // EDIT ME
+  {name:"Custom 2",    desc:"",                       url:""}   // EDIT ME
+];
+
+var TIPS = [ // EDIT ME: put your handle in desc and your link in url
+  {name:"CashApp",           desc:"$YourHandle",        url:"https://cash.app/$YourHandle",     color:"#00d64f"},
+  {name:"Venmo",             desc:"@YourHandle",        url:"https://venmo.com/YourHandle",     color:"#3d95ce"},
+  {name:"PayPal",            desc:"paypal.me/YourHandle",url:"https://paypal.me/YourHandle",    color:"#0070e0"},
+  {name:"Throne",            desc:"My wishlist",        url:"https://throne.com/yourname",      color:"#d4a017"},
+  {name:"Amazon Wishlist",   desc:"Treat me to something",url:"https://www.amazon.com/hz/wishlist/", color:"#ff9900"},
+  {name:"Buy Me a Coffee",   desc:"Fuel my day ☕",      url:"https://buymeacoffee.com/yourname",color:"#ffdd00"},
+  {name:"Custom Tip 1",      desc:"",                   url:""},  // EDIT ME
+  {name:"Custom Tip 2",      desc:"",                   url:""}   // EDIT ME
+];
+/* ================= end of editable block ================= */
+
+(function () {
+  function $(id) { return document.getElementById(id); }
+  function render(list, el, icon) {
+    list.forEach(function (item) {
+      if (!item.url) return;
+      var a = document.createElement("a");
+      a.className = "btn";
+      a.href = item.url;
+      a.target = "_blank";
+      a.rel = "noopener";
+      if (item.color) a.style.setProperty("--c", item.color);
+      var b = document.createElement("b");
+      b.textContent = (icon ? icon + " " : "") + item.name;
+      a.appendChild(b);
+      if (item.desc) {
+        var s = document.createElement("span");
+        s.textContent = item.desc;
+        a.appendChild(s);
+      }
+      el.appendChild(a);
+    });
+  }
+  document.title = PROFILE.name + " – Official Links";
+  $("photo").src = PROFILE.photo;
+  $("name").textContent = PROFILE.name;
+  $("tagline").textContent = PROFILE.tagline;
+  $("bio").textContent = PROFILE.bio;
+  $("copyName").textContent = PROFILE.name;
+  $("year").textContent = new Date().getFullYear();
+  $("email").href = "mailto:" + PROFILE.email;
+  render(LINKS, $("links"));
+  render(TIPS, $("tips"), "♥");
+})();
+</script>
+</body>
+</html>
